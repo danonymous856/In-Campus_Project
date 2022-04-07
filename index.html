@@ -1,0 +1,204 @@
+
+<html>
+    <head>
+    
+    <link rel="stylesheet" type="text/css" href="exp_css.css">
+    <script class="include" type="text/javascript" src="./jquery_files/jquery.min.js"></script>
+    <script class="include" type="text/javascript" src="./jquery_files/jquery.jqplot.min.js"></script>
+    <script type="text/javascript" src="./jquery_files/shCore.min.js"></script>
+    <script type="text/javascript" src="./jquery_files/shBrushJScript.min.js"></script>
+    <script type="text/javascript" src="./jquery_files/shBrushXml.min.js"></script>
+    <script class="include" type="text/javascript" src="./jquery_files/jqplot.meterGaugeRenderer.min.js"></script>
+    <script src="./pop_up/pop_up.js"></script>
+    <link rel="stylesheet" type="text/css" href="./pop_up/pop_up.css">
+    </head>
+    
+    <body>
+    <div id="whole_body" style=" position:relative; margin-left:auto; margin-right:auto; top:0px; width:1150px; height:860px">
+    <div style="font-size:30px; text-align:center; height:60px"> <b> <i>R-L-C Circuit Analysis </i> </b></div>
+            
+            <div id="dialogoverlay"></div>
+            <div id="dialogbox">
+              <div>
+                <div id="dialogboxhead"></div>
+                <div id="dialogboxbody"></div>
+                <div id="dialogboxfoot"></div>
+              </div>
+            </div>
+    
+    <form name='f1'>
+<!--
+    <div style="position:absolute; left:0px; top:50px; border-radius: 10px; border: 2px solid black; width:1150px; height:750px">
+-->
+              <script src="exp_js2.js"></script>
+
+                <div id="ckt_values1" style="position:relative; border: 2px solid black; border-radius: 10px; left:200px; top:10px; height:450px; width:794px; background-color:white  ">
+                    <p>
+                    <img id="main_ckt" src="./images/rlc_circuits_in_series.png" alt="Tutorials Point" style="position:absolute; background-color: #666666; border-radius: 10px; top:0px;  right:0px; height:332px; width:794px"/>
+
+                    <img id="led" onclick="change_led()" src="./images/led_on.png" style="background-color:transparent; position:absolute; height:35px; width:35px; top:6px; left:8px"/>
+
+                    <img id="myImage" onclick="changeImage1()" src="./images/s1.png" style="background-color:transparent; cursor: pointer; position:absolute; height:50px; width:50px; top:6px; left:8px"/>
+
+                    <p style="text-align:center; position:absolute; right:-2px; width:100px; top:384px">Vin <br>(in Volt)</p>
+                    <input type="number" name="vin" value="110" id="vin" style="cursor: pointer; position:absolute; top:380px;  right:20px; width:50px">
+
+                    <p style="text-align:center; position:absolute; top:390px;  right:190px; width:80px; ">Frequency (in Hz)</p>
+                    <input type="number" name="f" value="50" id="f" style="background-color:#E3DE84; cursor: pointer; position:absolute; top:384px;  right:210px; width:40px">
+
+                    <div class="example-content" style="position:absolute; top:162px;  right:345px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart1" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge1.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:65px;  right:298px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart2" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge2.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:103px;  right:180px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart3" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge3.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:-25px;  right:31px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart4" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge4.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:85px;  right:33px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart5" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge5.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:174px;  right:33px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart6" class="plot" style="background-color:transparent; width:185px; height:110px;"></div>
+                        <script src="./jquery_files/js_metergauge6.js"></script>
+                    </div>
+                    <div class="example-content" style="position:absolute; top:269px;  right:103px;">
+                        <link rel="stylesheet" type="text/css" href="./jquery_files/css_metergauge.css">
+                        <div id="chart7" class="plot" style="background-color:transparent; width:215px; height:130px;"></div>
+                        <script src="./jquery_files/js_metergauge7.js"></script>
+                    </div>
+                    <scirpt  type="text/javascript">
+                        function change_R()
+                        {
+                            if (R.value > 50 || R.value < 0){
+                                R.value=50;
+                                }
+                            else{
+                                R.value=R.value;
+                                }
+                        }
+                    </scirpt>
+                    <input type="number" name="R" value="25" id="R" min="0" max="50" step="1" onchange="execute_ckt1();" style="cursor: pointer; position:absolute; top:15px;  right:505px; width:35px">
+<!--
+                    <img id="led" onclick="change_led()" src="./images/led_on.png" style="background-color:transparent; position:absolute; height:35px; width:35px; top:6px; left:8px"/>
+-->
+
+                    <input type="number" name="L" id="L" value="60" style="position:absolute; top:10px;  right:308px; width:40px; background-color:transparent;" readonly="readonly">
+                    <input type="range" name="l1" id="l1" min="0" max="6" step="2" value="2" onchange="L.value=this.value * 15; execute_ckt1();" style="cursor: pointer; position:absolute; top:25px;  right:305px; width:40px">
+                    <input type="number" name="C" id="C" value="140" style="position:absolute; top:15px;  right:40px; width:40px; background-color:transparent;" readonly="readonly">
+                    <input type="range" name="c1" id="c1" min="0" max="6" step="2" value="2" onchange="C.value=this.value * 35; execute_ckt1();" style="cursor: pointer; position:absolute; top:29px;  right:47px; width:40px; ">
+                    
+                    <input type="number" name="vin2" id="vin2" value="0" style="position:absolute; top:170px;  right:580px; width:50px; background-color:transparent;" readonly="readonly">
+                    <p style="text-align:center; position:absolute; top:120px;  right:556px; width:100px; ">Vin 1<br>(in volts)</p>
+                    <input type="range" name="vin1" id="vin1" min="0" max="1" step="0.001" value="1" onchange="vin2.value=this.value; execute_ckt1();" style=" transform: rotate(270deg); cursor: pointer; position:absolute; top:150px;  right:570px; width:140px; background-color:#E3DE84;">
+                    <p style="text-align:center; position:absolute; top:384px;  right:90px; width:100px; ">Power <br>(in watts)</p>
+                    <input type="number" name="W" value="3" id="W" style="background-color:#E3DE84; text-align:center; position:absolute; top:380px;  right:110px; width:60px" readonly="readonly">
+                    <p style="text-align:center; position:absolute; top:166px; right:710px; width:100px; ">Current <br>(in Amp)</p>
+                    <input type="number" name="A" value="2" id="A" style="background-color:#E3DE84; text-align:center; position:absolute; top:156px;  right:740px; width:50px" readonly="readonly">
+                    <input type="number" name="VS" value="1" id="VS" style="background-color:#E3DE84; text-align:center; position:absolute; top:300px;  right:260px; width:70px" readonly="readonly">
+                    <input type="number" name="VR" value="4" id="VR" style="background-color:#E3DE84; text-align:center; position:absolute; top:80px;  right:520px; width:70px" readonly="readonly">
+                    <input type="number" name="VL" value="5" id="VL" style="background-color:#E3DE84; text-align:center; position:absolute; top:75px;  right:340px; width:70px" readonly="readonly">
+                    <input type="number" name="VC" value="6" id="VC" style="background-color:#E3DE84; text-align:center; position:absolute; top:80px;  right:130px; width:70px" readonly="readonly">
+
+                    <input type="number" name="PF" value="7" id="PF" style="background-color:#E3DE84; text-align:center; position:absolute; top:80px;  right:130px; width:70px" readonly="readonly">
+
+                   <input type="button" value="Capacitive" name='lag' id='lag' style="background-color:white; text-align:center; font-size: 16px; position:absolute; top:405px; right:645px; width:100px; height:30px">
+                    <input type="button" value="Inductive" name='lead' id='lead' style="background-color:white; text-align:center; font-size: 16px; position:absolute; top:405px; right:645px; width:100px; height:30px">
+
+                    <p id="unity" style="display:none;color:blue; text-align:center; font-size: 16px; position:absolute; top:320px; right:70px; width:100px; height:30px"> Unity</p>
+
+                    
+                    <select name="SW1" id="SW1" onchange="execute_ckt1();" style="cursor: pointer; background-color:yellow; position:absolute; top:20px;  right:660px; width:70px">
+                        <option value="1" SELECTED>Open</option><option value="2">Closed</option>
+                    </select>
+                    <!--<p style="text-align:center; font-size:18px; position:absolute; left:424px; width:100px; top:278px"><b>Phase <br>(in degree)</b></p>
+                    </p>-->
+                    
+                    
+                </div>
+    <input type="button" value="Fill the Table" onclick="simulate_rc1()" style="cursor: pointer; background-color:#FE4080; text-align:center; font-size: 16px; position:absolute; top:474px; left:250px; width:150px; height:35px">
+                <div id="observation" align="center" style="position:absolute; top:600px; width:1100px; left:10px ">
+                     <u style="color:black; font-size:22px; text-align:center"><b>Observation Table </b></u>
+                    <table class='t1' cellspacing='0' style="font-size:12px; border: 2px solid black;"> <!-- cellspacing='0' is important, must stay -->
+
+                    <tr><th>Serial no. <br>of Observation</th><th>Power Supply Vs <br>(in Volt)</th><th>Current I <br>(in Amp)</th><th>Power <br>(in Watt)</th>
+                        <th>VR <br>(in Volt)</th><th>VL <br>(in Volt)</th>
+                        <th>VC <br>(in Volt)</th><th>Theta <br>(in degree)</th><th>Power factor </th></tr><!-- Table Header -->
+
+                        <tr><td>1</td>
+                        <td><input type="number" name="t1a" value="" id="t1a" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1b" value="" id="t1b" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1c" value="" id="t1c" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1d" value="" id="t1d" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1e" value="" id="t1e" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1f" value="" id="t1f" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1g" value="" id="t1g" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t1h" value="" id="t1h" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        </tr><!-- Table Row -->
+                        
+                        <tr><td>2</td>
+                        <td><input type="number" name="t2a" value="" id="t2a" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2b" value="" id="t2b" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2c" value="" id="t2c" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2d" value="" id="t2d" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2e" value="" id="t2e" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2f" value="" id="t2f" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2g" value="" id="t2g" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t2h" value="" id="t2h" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        </tr>
+                        
+                        <tr><td>3</td>
+                        <td><input type="number" name="t3a" value="" id="t3a" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3b" value="" id="t3b" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3c" value="" id="t3c" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3d" value="" id="t3d" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3e" value="" id="t3e" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3f" value="" id="t3f" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3g" value="" id="t3g" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t3h" value="" id="t3h" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        </tr>
+                        
+                        <tr><td>4</td>
+                        <td><input type="number" name="t4a" value="" id="t4a" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4b" value="" id="t4b" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4c" value="" id="t4c" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4d" value="" id="t4d" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4e" value="" id="t4e" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4f" value="" id="t4f" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4g" value="" id="t4g" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t4h" value="" id="t4h" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        </tr>
+                        
+                        <tr><td>5</td>
+                        <td><input type="number" name="t5a" value="" id="t5a" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5b" value="" id="t5b" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5c" value="" id="t5c" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5d" value="" id="t5d" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5e" value="" id="t5e" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5f" value="" id="t5f" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5g" value="" id="t5g" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        <td><input type="number" name="t5h" value="" id="t5h" style="background-color:transparent; text-align:center; text-color:#000000; border:none; width:90px" readonly="readonly"></td>
+                        </tr>
+                    </table>
+                    <br><br>
+                </div>
+           
+<!--        </div>-->
+    </form>
+    </div>
+    </body>
+    </html>
